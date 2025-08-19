@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import Auth from './pages/Auth/Auth'
 import DashboardPage from './pages/Dashboard/DashboardPage'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -13,7 +13,6 @@ import Distribution from './pages/Dashboard/Products/Distribution';
 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>

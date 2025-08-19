@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { auth } from "../../utils/firebase";
-import { get, getDatabase, onValue, ref, set } from "firebase/database";
+import { get, getDatabase, ref, set } from "firebase/database";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -62,7 +62,7 @@ export default function Auth() {
     const email = form.get("email") as string;
     const password = form.get("password") as string;
     const confirmPassword = form.get("confirmPassword") as string;
-    const terms = form.get("terms");
+    // const terms = form.get("terms");
 
     if (!name || !email || !password || !confirmPassword) {
       setError({ type: "register", message: "Please fill in all fields" });

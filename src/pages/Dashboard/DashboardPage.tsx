@@ -15,8 +15,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 const DashboardPage: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const firstname = sessionStorage.getItem("name")?.split(" ")[0] || ""
-  const [name, setName] = useState(sessionStorage.getItem("name")|| "")
-  const [fname, setFName] = useState(firstname)
+ // const [name, setName] = useState(sessionStorage.getItem("name")|| "")
+  const [fname] = useState(firstname)
   const navigate = useNavigate()
 
   return (

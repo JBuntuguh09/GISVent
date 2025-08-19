@@ -14,7 +14,7 @@ const Spinner = () => (
     }}
     animate={{ rotate: 360 }}
     transition={{
-      loop: Infinity,
+      
       ease: "linear",
       duration: 1,
     }}
@@ -30,18 +30,23 @@ export default function Distribution() {
   useEffect(() => {
     const distributeRef = ref(db, "distribution");
     const unsubscribe = onValue(distributeRef, (snapshot) => {
-      const d = snapshot.val() || {};
+      const d = (snapshot.val() || {}) as Record<string, any>;
     
       const allRecords = Object.entries(d).flatMap(
         ([productId, distributions]) =>
-          Object.entries(distributions).map(
-            ([distId, record]) => ({ productId, distId, ...record })
+          Object.entries(distributions as Record<string, any>).map(
+            ([distId, record]) => ({
+              productId,
+              distId,
+              ...(record as object),
+            })
           )
       );
     
       setData(allRecords);
       setIsLoading(false);
     });
+    
     
     return () => unsubscribe();
   }, [db]);

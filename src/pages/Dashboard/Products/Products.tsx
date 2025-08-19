@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { getDatabase, ref, onValue, push, remove } from "firebase/database";
+import { getDatabase, ref, onValue,  remove } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
 const statusColor: Record<string, string> = {
@@ -10,7 +10,12 @@ const statusColor: Record<string, string> = {
 };
 
 const Spinner = () => {
-  const spinTransition = { loop: Infinity, ease: "linear", duration: 1 };
+  // const spinTransition = { loop: Infinity, ease: "linear", duration: 1 };
+  // const spring = {
+  //   type: "spring",
+  //   damping: 10,
+  //   stiffness: 100
+  // }
   const circleStyle: React.CSSProperties = {
     width: 40, height: 40,
     border: "5px solid #ccc",
@@ -19,7 +24,7 @@ const Spinner = () => {
   };
 
   return (
-    <motion.div style={circleStyle} animate={{ rotate: 360 }} transition={spinTransition} />
+    <motion.div style={circleStyle} animate={{ rotate: 360 }}  />
   );
 };
 

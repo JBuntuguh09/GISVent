@@ -46,7 +46,7 @@ import { useEffect, useState } from "react";
     const getUsers = ()=>{
       const userRef = ref(db, "users");
       const productRef = ref(db, "products");
-      const unsubscribe = onValue(userRef, (snapshot) => {
+       onValue(userRef, (snapshot) => {
         const data = snapshot.val();
         setUsers(data ? Object.values(data) : []);
        // setIsLoading(false);
@@ -57,6 +57,25 @@ import { useEffect, useState } from "react";
         setProducts(data ? Object.values(data) : []);
        // setIsLoading(false);
       });
+
+    const distributeRef = ref(db, "distribution");
+     onValue(distributeRef, (snapshot) => {
+      const d = snapshot.val() || {};
+    
+       Object.entries(d).flatMap(
+        ([productId, distributions]) =>
+        Object.entries(distributions as Record<string, any>).map(
+          ([distId, record]) => ({
+            productId,
+            distId,
+            ...(record as object),
+          })
+        )
+      );
+    
+      // setData(allRecords);
+      // setIsLoading(false);
+    });
     }
 
     useEffect(() => {
